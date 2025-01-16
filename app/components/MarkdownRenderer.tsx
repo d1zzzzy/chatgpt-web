@@ -56,7 +56,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           </Link>
         ),
         // @ts-expect-error no-types
-        code: ({ node, inline, className, children, ...props }) => {
+        code: ({ inline, className, children, ...props }) => {
           return !inline ? (
             <Box
               sx={{

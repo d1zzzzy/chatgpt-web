@@ -1,10 +1,9 @@
-const CRYPTO_KEY = 'your-secret-key';  // 建议使用环境变量
-
 // 检查字符串是否是有效的 base64 编码
 const isBase64 = (str: string): boolean => {
   try {
     return btoa(atob(str)) === str;
-  } catch (err) {
+  } catch (err: unknown)  {
+    console.log(err);
     return false;
   }
 };

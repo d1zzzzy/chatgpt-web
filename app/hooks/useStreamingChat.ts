@@ -6,8 +6,8 @@ interface StreamingChatProps {
   apiKey: string | null;
   model: string;
 
-  onMessage: (data: any) => void;
-  onError: (error: { title: string; message: string }) => void;
+  onMessage: (data: Record<string, unknown>) => void;
+  onError: (error: Record<string, unknown>) => void;
   onStart?: () => void;
   onEnd?: () => void;
 }
@@ -28,8 +28,8 @@ export const useStreamingChat = ({
     setModel(v);
   };
 
-  const handleError = (error: any) => {
-    let errorMessage = ERROR_MESSAGES.DEFAULT;
+  const handleError = (error: Record<string, unknown>) => {
+    let errorMessage: Record<string, unknown> = ERROR_MESSAGES.DEFAULT;
 
     if (error?.code) {
       switch (error.code) {
@@ -148,15 +148,16 @@ export const useStreamingChat = ({
         return true;
       } else {
         console.error('Request Error:', error);
-        handleError(error as any);
+        handleError(error as Record<string, unknown>);
         return false;
       }
     } finally {
       if (reader) {
         try {
           await reader.cancel();
-        } catch (e) {
+        } catch (e: unknown) {
           // 忽略取消时的错误
+          console.log(e)
         }
       }
     }
