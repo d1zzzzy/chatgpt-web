@@ -106,7 +106,8 @@ const ChatApp = () => {
     onMessage: (data) => {
       setError(null);
       if (data.type === 'chunk') {
-        setMessages(prev => {
+        // @ts-expect-error unexpected data type
+        setMessages((prev) => {
           const lastMessage = prev[prev.length - 1];
           if (lastMessage?.role === "assistant") {
             return [
@@ -130,6 +131,7 @@ const ChatApp = () => {
     },
     onError: (error) => {
       console.error('API error:', error);
+      // @ts-expect-error unexpected error type
       setError(error);
       setIsLoading(false);
     },
