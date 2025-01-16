@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## 运行
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+// 安装包
+pnpm install
+
+// 启动本地
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 功能介绍
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 登记 API Key
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. 首次进入应用时，用户需要输入自己的 `apiKey`。
+2. 应用会将 `apiKey` 加密后存储在 `localStorage` 中，以便后续使用。
 
-## Learn More
+### 切换免费模型
 
-To learn more about Next.js, take a look at the following resources:
+1. 提供了两个免费的模型供用户切换使用。
+2. 可以根据需要选择不同的模型。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### AI 交互
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. 可以通过输入框与 AI 进行对话。
+2. 应用会根据用户输入调用相应的 AI 模型进行响应。
 
-## Deploy on Vercel
+### API Key 验证
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. 在用户输入新的 `apiKey` 时，应用会验证其有效性。
+2. 验证成功后，`apiKey` 会被加密并存储。
+3. 如果验证失败，用户会收到错误提示，并需要重新输入有效的 `apiKey`。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 错误处理
+
+1. 在 API Key 验证或存储过程中出现错误时，应用会显示相应的错误信息。
+2. 用户可以根据提示进行相应的操作以解决问题。
